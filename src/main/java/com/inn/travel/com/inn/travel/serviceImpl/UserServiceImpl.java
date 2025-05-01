@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public ResponseEntity<String> signUp(Map<String, String> requestMap) {
+        public ResponseEntity<String> signUp(Map<String, String> requestMap) {
         log.info("Inside signUp {}", requestMap);
         try {
             if (validateSignupMap(requestMap)) {

@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 public class TravelUtils {
 
     private TravelUtils() {
-        // Prevent instantiation
+
     }
 
     public static ResponseEntity<String> getResponseEntity(String responseMessage, HttpStatus httpStatus) {
