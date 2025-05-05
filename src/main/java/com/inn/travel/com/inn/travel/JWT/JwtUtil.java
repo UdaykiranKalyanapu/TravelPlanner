@@ -46,19 +46,19 @@ public Boolean validateToken (String token, UserDetails userDetails){
     return (username.equals(userDetails.getUsername())&& !isTokenExpired(token));
 
 }
+    private String createToken(Map<String,Object> claims, String subject){
+        return Jwts.builder()
+                .setClaims(claims).
+                setSubject(subject).
+                setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis()+1000 * 60 * 60 * 10)).
+                signWith(SignatureAlgorithm.HS256,secret).compact();
+    }
 
 
-private String createToken(Map<String,Object> claims, String subject){
-return Jwts.builder()
-        .setClaims(claims).
-        setSubject(subject).
-        setIssuedAt(new Date(System.currentTimeMillis()))
-        .setExpiration(new Date(System.currentTimeMillis()+1000 * 60 * 60 * 10)).
-        signWith(SignatureAlgorithm.HS256,secret).compact();
-}
 
 
-public String generateToken(String username, String role){
+    public String generateToken(String username, String role){
     Map<String,Object> claims = new HashMap<>();
     claims.put("role", role);
 
