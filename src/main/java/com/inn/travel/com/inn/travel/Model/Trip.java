@@ -19,6 +19,7 @@ public class Trip implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "trip_id")
     private Integer tripId;
 
